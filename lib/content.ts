@@ -4,6 +4,9 @@ import type { IconName } from "@/components/Icon";
 // used for canonical URL, Open Graph tags, and JSON-LD.
 export const siteUrl = "https://example.com";
 
+/** Icon-plate colours. Icons vary by category; hover states stay on the site accent. */
+export type TintKey = "violet" | "amber" | "sky" | "indigo" | "emerald" | "rose" | "slate";
+
 export const profile = {
   name: "Fahad Yusuf Qureshi",
   title: "Web Developer & Agentic AI Engineer",
@@ -60,6 +63,8 @@ export const experience: ExperienceEntry[] = [
 
 export type Project = {
   icon: IconName;
+  /** Tint key for the icon plate — maps to a .tint-* class in globals.css */
+  tint: TintKey;
   title: string;
   description: string;
   stack: string[];
@@ -68,6 +73,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     icon: "file",
+    tint: "sky",
     title: "HIMS Letter Management System",
     description:
       "HR staff generate, archive, and search official employee letters from versioned templates — rendered to PDF and stored with role-based access control.",
@@ -75,6 +81,7 @@ export const projects: Project[] = [
   },
   {
     icon: "mic",
+    tint: "violet",
     title: "Real-Time Voice Receptionist for Aesthetic/Dental Clinics",
     description:
       "AI voice receptionist for dental and aesthetic clinics, built with Retell for natural, Urdu-accented conversations.",
@@ -82,6 +89,7 @@ export const projects: Project[] = [
   },
   {
     icon: "graduation",
+    tint: "amber",
     title: "CampusBuddy — Full-Stack Web Platform",
     description:
       "Full-stack university platform with real-time chat, announcements, lost-and-found, and an anonymous confession board.",
@@ -89,6 +97,7 @@ export const projects: Project[] = [
   },
   {
     icon: "lock",
+    tint: "rose",
     title: "Password Strength Manager — Cybersecurity",
     description:
       "Evaluates password robustness with entropy-based scoring, plus end-to-end hashing and encryption.",
@@ -96,6 +105,7 @@ export const projects: Project[] = [
   },
   {
     icon: "store",
+    tint: "emerald",
     title: "GoatIt — Livestock Marketplace App",
     description:
       "Full-featured marketplace app for buying and selling livestock, digitizing an informal, in-person process.",
@@ -105,6 +115,8 @@ export const projects: Project[] = [
 
 export type SkillCategory = {
   icon: IconName;
+  /** Tint key for the icon plate — maps to a .tint-* class in globals.css */
+  tint: TintKey;
   name: string;
   description: string;
   items: string[];
@@ -112,7 +124,8 @@ export type SkillCategory = {
 
 export const skills: SkillCategory[] = [
   {
-    icon: "cpu",
+    icon: "bot",
+    tint: "violet",
     name: "Agentic AI",
     description: "Building and deploying voice and LLM-based agents end to end.",
     items: [
@@ -131,12 +144,14 @@ export const skills: SkillCategory[] = [
   },
   {
     icon: "code",
+    tint: "amber",
     name: "Web Development",
     description: "Full-stack product development from UI to backend services.",
     items: ["JavaScript", "C++", "CSS", "Node.js", "React.js", "REST APIs"],
   },
   {
     icon: "cloud",
+    tint: "sky",
     name: "DevOps",
     description: "Shipping and operating applications reliably in production.",
     items: [
@@ -149,13 +164,15 @@ export const skills: SkillCategory[] = [
     ],
   },
   {
-    icon: "layers",
+    icon: "nodes",
+    tint: "indigo",
     name: "Core CS",
     description: "Fundamentals that underpin everything else I build.",
     items: ["Data Structures", "Object-Oriented Programming"],
   },
   {
     icon: "database",
+    tint: "emerald",
     name: "Databases",
     description: "Modeling, storing, and querying data across relational and NoSQL systems.",
     items: ["PostgreSQL", "Supabase", "Prisma", "Firebase", "SQL", "SQLite", "MongoDB"],

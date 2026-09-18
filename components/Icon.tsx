@@ -11,7 +11,9 @@ export type IconName =
   | "mail"
   | "linkedin"
   | "github"
-  | "layers";
+  | "layers"
+  | "bot"
+  | "nodes";
 
 // Stroke-based icons share one set of presentation attributes; brand marks are
 // filled paths and opt out via `filled`.
@@ -81,6 +83,25 @@ const strokeIcons: Record<string, React.ReactNode> = {
       <polygon points="12 2 22 8 12 14 2 8" />
       <polyline points="2 13.5 12 19.5 22 13.5" />
       <polyline points="2 18.5 12 22 22 18.5" />
+    </>
+  ),
+  bot: (
+    <>
+      <rect x="4" y="8" width="16" height="12" rx="3" />
+      <path d="M12 8V5" />
+      <circle cx="12" cy="3.6" r="1.4" />
+      <path d="M2 13v3M22 13v3" />
+      <circle cx="9.2" cy="14" r="1.1" fill="currentColor" stroke="none" />
+      <circle cx="14.8" cy="14" r="1.1" fill="currentColor" stroke="none" />
+    </>
+  ),
+  // Binary-tree shape — reads as data structures
+  nodes: (
+    <>
+      <circle cx="12" cy="4.5" r="2.3" />
+      <circle cx="5" cy="19.5" r="2.3" />
+      <circle cx="19" cy="19.5" r="2.3" />
+      <path d="M12 6.8v3.4M5 17.2v-4.5a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v4.5" />
     </>
   ),
 };

@@ -22,7 +22,7 @@ export default function Projects() {
             <SpotlightCard className="card-surface h-full p-6 transition-transform duration-300 hover:-translate-y-1 sm:p-8 md:p-10">
               <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
                 <div
-                  className="icon-tile h-14 w-14 shrink-0 rounded-2xl">
+                  className={`icon-tile h-14 w-14 shrink-0 rounded-2xl tint-${featured.tint}`}>
                   <Icon name={featured.icon} className="h-6 w-6" />
                 </div>
 
@@ -55,7 +55,7 @@ export default function Projects() {
               className="card-surface flex h-full flex-col gap-4 p-5 transition-transform duration-300 hover:-translate-y-1 sm:p-7"
             >
               <div
-                className="icon-tile h-11 w-11 shrink-0 rounded-[10px]">
+                className={`icon-tile h-11 w-11 shrink-0 rounded-[10px] tint-${project.tint}`}>
                 <Icon name={project.icon} />
               </div>
               <h3 className="text-[1.1rem] font-bold text-text-primary">{project.title}</h3>
