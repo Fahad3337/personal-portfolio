@@ -1,0 +1,413 @@
+@import "tailwindcss";
+
+/* =========================================
+   DESIGN TOKENS — single source of truth.
+   Every component reads colors/type/spacing
+   from these variables; no hardcoded hex or
+   magic pixel values in JSX.
+   ========================================= */
+:root {
+  /* Surfaces */
+  --bg: #0a0a0b;
+  --bg-elevated: #111114;
+  --card: rgba(255, 255, 255, 0.025);
+  --card-hover: rgba(255, 255, 255, 0.05);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(34, 197, 94, 0.5);
+
+  /* Text */
+  --text-primary: #f4f4f5;
+  --text-secondary: #a1a1aa;
+  --text-tertiary: #7a7a85;
+
+  /* Accent — a single terminal-green hue. --accent-2 is a lighter tone of the
+     same hue (not a second colour), used for chip text and gradient depth. */
+  --accent: #22c55e;
+  --accent-hover: #4ade80;
+  --accent-soft: rgba(34, 197, 94, 0.12);
+  --accent-2: #86efac;
+  --accent-dim: #10b981;
+
+  /* Cursor-tracking spotlight */
+  --spotlight-glow: rgba(34, 197, 94, 0.14);
+  --spotlight-edge: rgba(74, 222, 128, 0.65);
+
+  /* Fonts */
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
+
+  /* Fluid type scale */
+  --fs-hero: clamp(2.25rem, 4vw + 1.5rem, 5.5rem);
+  --fs-h2: clamp(1.875rem, 1.5vw + 1.5rem, 3rem);
+  --fs-h3: 1.125rem;
+
+  /* Layout */
+  --container-max: 1200px;
+  --nav-height: 69px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-card: var(--card);
+  --color-card-hover: var(--card-hover);
+  --color-border: var(--border);
+  --color-border-hover: var(--border-hover);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-2: var(--accent-2);
+  --color-accent-dim: var(--accent-dim);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  /* Small-phone breakpoint, for the 320–479px band */
+  --breakpoint-xs: 30rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  /* Clear the fixed nav, plus a little breathing room */
+  scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+}
+
+/* =========================================
+   REUSABLE PATTERNS
+   ========================================= */
+.focus-ring {
+  outline: none;
+}
+.focus-ring:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-[1200px] px-5 sm:px-6;
+  }
+  .section-py {
+    @apply py-16 md:py-24;
+  }
+  .eyebrow {
+    @apply mb-4 inline-flex items-center gap-2 font-mono text-xs font-medium tracking-[0.2em] text-accent lowercase;
+  }
+  .eyebrow-line {
+    @apply h-px w-6 bg-accent;
+  }
+  /* Shared icon plate used by skills, projects and contact */
+  .icon-tile {
+    @apply flex items-center justify-center text-accent ring-1 ring-white/10;
+    background: linear-gradient(135deg, var(--accent-soft), rgba(134, 239, 172, 0.08));
+  }
+  .heading-lg {
+    color: var(--text-primary);
+    font-size: var(--fs-h2);
+    @apply font-extrabold tracking-tight;
+  }
+  .body-copy {
+    @apply max-w-[65ch] leading-[1.8] text-text-secondary;
+  }
+  .card-surface {
+    @apply rounded-2xl border border-border bg-card transition-all duration-300 hover:border-border-hover hover:bg-card-hover;
+  }
+  /* Slightly larger on phones — 0.68rem lands at ~10.9px, too small to read comfortably */
+  .chip {
+    @apply rounded border border-white/10 bg-white/[0.06] px-2.5 py-1 font-mono text-[0.75rem] text-text-secondary md:text-[0.7rem];
+  }
+  .btn {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-7 py-3 text-sm font-semibold transition-all duration-200;
+  }
+  .btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .btn-primary {
+    @apply relative overflow-hidden bg-accent font-bold text-bg hover:-translate-y-0.5 hover:bg-accent-hover;
+    box-shadow: 0 0 24px var(--accent-soft);
+  }
+  .btn-primary:hover {
+    box-shadow: 0 0 36px var(--accent-soft);
+  }
+  /* Light sweeps across the button on hover */
+  .btn-primary::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -110%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+    transition: left 0.6s ease;
+    pointer-events: none;
+  }
+  .btn-primary:hover::after {
+    left: 110%;
+  }
+  .btn-secondary {
+    @apply border border-border text-text-primary hover:border-accent hover:bg-accent-soft hover:text-accent;
+  }
+}
+
+/* =========================================
+   FILM GRAIN — a fixed, ultra-low-opacity noise layer that gives the
+   flat dark background perceptible depth. Purely decorative.
+   ========================================= */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* =========================================
+   SPOTLIGHT CARD — a radial glow and a border highlight that both track
+   the cursor. --mx/--my are set on mousemove (see components/SpotlightCard.tsx).
+   ========================================= */
+.spotlight-card {
+  position: relative;
+  isolation: isolate;
+}
+.spotlight-card > * {
+  position: relative;
+  z-index: 1;
+}
+/* Inner glow following the cursor */
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 50%),
+    var(--spotlight-glow),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+/* Border-only highlight, drawn with a mask so only the 1px edge lights up */
+.spotlight-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(
+    320px circle at var(--mx, 50%) var(--my, 50%),
+    var(--spotlight-edge),
+    transparent 65%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+.spotlight-card:hover::after {
+  opacity: 1;
+}
+
+/* =========================================
+   MARQUEE — seamless infinite scroll (track content is duplicated once).
+   ========================================= */
+.marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 45s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Entrance animation for above-the-fold content, staggered via inline delay */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise {
+  opacity: 0;
+  animation: rise 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Hairline gradient seam between sections */
+.seam {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+
+/* Animated underline for inline text links */
+.link-underline {
+  position: relative;
+  text-decoration: none;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.25s ease;
+}
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* Scroll-reveal: fade + translate up, triggered once via IntersectionObserver (see components/Reveal.tsx) */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #fff 0%, var(--accent-2) 55%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Vertical sheen for the hero headline. Deliberately vertical so each word
+   renders identically no matter where it sits on the line. */
+.headline-sheen {
+  background: linear-gradient(180deg, #ffffff 0%, #ffffff 45%, #bbf7d0 125%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stat-gradient {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -20px) scale(1.05);
+  }
+  66% {
+    transform: translate(-20px, 30px) scale(0.95);
+  }
+}
+
+@keyframes float-x-center {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-6px);
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Respect reduced-motion system-wide: no reveal, no hover transforms/animation */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .rise {
+    opacity: 1 !important;
+    animation-delay: 0ms !important;
+  }
+  .marquee-track {
+    animation: none !important;
+  }
+}
