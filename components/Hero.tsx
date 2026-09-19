@@ -1,6 +1,6 @@
 import { profile, heroTitles } from "@/lib/content";
 import Typewriter from "@/components/Typewriter";
-import AsciiCube from "@/components/AsciiCube";
+import TerminalPanel from "@/components/TerminalPanel";
 
 const nameWords = profile.name.split(" ");
 
@@ -104,7 +104,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <AsciiCube />
+        <TerminalPanel />
       </div>
 
       <a
