@@ -1,6 +1,6 @@
 import { profile, heroTitles } from "@/lib/content";
 import Typewriter from "@/components/Typewriter";
-import RotatingCube from "@/components/RotatingCube";
+import AsciiCube from "@/components/AsciiCube";
 
 const nameWords = profile.name.split(" ");
 
@@ -104,7 +104,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <RotatingCube />
+        <AsciiCube />
       </div>
 
       <a
