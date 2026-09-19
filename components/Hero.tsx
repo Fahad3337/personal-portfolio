@@ -1,5 +1,6 @@
 import { profile, heroTitles } from "@/lib/content";
 import Typewriter from "@/components/Typewriter";
+import RotatingCube from "@/components/RotatingCube";
 
 const nameWords = profile.name.split(" ");
 
@@ -51,7 +52,7 @@ export default function Hero() {
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-bg" />
       </div>
 
-      <div className="container-page relative z-10">
+      <div className="container-page relative z-10 flex items-center justify-between gap-12">
         <div className="max-w-2xl text-left">
           <h1
             className="font-black tracking-[-0.04em]"
@@ -102,6 +103,8 @@ export default function Hero() {
             </a>
           </div>
         </div>
+
+        <RotatingCube />
       </div>
 
       <a

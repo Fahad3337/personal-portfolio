@@ -1,0 +1,18 @@
+export default function RotatingCube() {
+  return (
+    <div
+      aria-hidden
+      className="cube-scene hidden shrink-0 lg:block"
+      style={{ "--cube-size": "220px" } as React.CSSProperties}
+    >
+      <div className="cube">
+        <div className="cube-face cube-face--front" />
+        <div className="cube-face cube-face--back" />
+        <div className="cube-face cube-face--right" />
+        <div className="cube-face cube-face--left" />
+        <div className="cube-face cube-face--top" />
+        <div className="cube-face cube-face--bottom" />
+      </div>
+    </div>
+  );
+}
