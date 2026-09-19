@@ -67,9 +67,10 @@ export default function Nav() {
   }, []);
 
   return (
+    <>
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled && !open
+        scrolled
           ? "border-b border-border bg-bg/85 backdrop-blur-xl"
           : "border-b border-transparent bg-transparent"
       }`}
@@ -128,50 +129,52 @@ export default function Nav() {
         />
       </div>
 
-      {open && (
-        <div
-          id="mobile-menu"
-          className="fixed inset-0 z-50 flex flex-col bg-bg px-5 pt-3 pb-10 sm:hidden"
-        >
-          <div className="flex items-center justify-between">
-            <span className="inline-flex min-h-11 items-center font-mono text-[1.05rem] font-bold tracking-tight text-text-primary">
-              fahad<span className="text-accent">_</span>
-            </span>
-            <button
-              type="button"
-              onClick={() => setOpen(false)}
-              aria-label="Close menu"
-              className="focus-ring flex h-11 w-11 items-center justify-center rounded-lg border border-border text-xl text-text-secondary transition-colors hover:border-accent hover:text-accent"
-            >
-              <span aria-hidden>✕</span>
-            </button>
-          </div>
-
-          <nav aria-label="Mobile" className="mt-10 flex flex-1 flex-col gap-1">
-            {links.map((link, i) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="focus-ring group flex min-h-14 items-center gap-4 rounded-lg border-b border-border/60 px-1 text-2xl font-bold text-text-primary transition-colors hover:text-accent"
-              >
-                <span aria-hidden className="font-mono text-xs font-medium text-accent">
-                  0{i + 1}
-                </span>
-                {link.label}
-              </a>
-            ))}
-          </nav>
-
-          <a
-            href="#contact"
-            onClick={() => setOpen(false)}
-            className="btn btn-primary mt-8 w-full"
-          >
-            Say Hi
-          </a>
-        </div>
-      )}
     </header>
+
+    {open && (
+      <div
+        id="mobile-menu"
+        className="fixed inset-0 z-50 flex flex-col bg-bg px-5 pt-3 pb-10 sm:hidden"
+      >
+        <div className="flex items-center justify-between">
+          <span className="inline-flex min-h-11 items-center font-mono text-[1.05rem] font-bold tracking-tight text-text-primary">
+            fahad<span className="text-accent">_</span>
+          </span>
+          <button
+            type="button"
+            onClick={() => setOpen(false)}
+            aria-label="Close menu"
+            className="focus-ring flex h-11 w-11 items-center justify-center rounded-lg border border-border text-xl text-text-secondary transition-colors hover:border-accent hover:text-accent"
+          >
+            <span aria-hidden>✕</span>
+          </button>
+        </div>
+
+        <nav aria-label="Mobile" className="mt-10 flex flex-1 flex-col gap-1">
+          {links.map((link, i) => (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={() => setOpen(false)}
+              className="focus-ring group flex min-h-14 items-center gap-4 rounded-lg border-b border-border/60 px-1 text-2xl font-bold text-text-primary transition-colors hover:text-accent"
+            >
+              <span aria-hidden className="font-mono text-xs font-medium text-accent">
+                0{i + 1}
+              </span>
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
+        <a
+          href="#contact"
+          onClick={() => setOpen(false)}
+          className="btn btn-primary mt-8 w-full"
+        >
+          Say Hi
+        </a>
+      </div>
+    )}
+    </>
   );
 }
