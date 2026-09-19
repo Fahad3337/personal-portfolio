@@ -92,7 +92,12 @@ export default function Hero() {
             <a href="#projects" className="btn btn-primary w-full xs:w-auto">
               View Projects
             </a>
-            <a href="/resume.pdf" download className="btn btn-secondary w-full xs:w-auto">
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-secondary w-full xs:w-auto"
+            >
               Download CV
             </a>
           </div>
