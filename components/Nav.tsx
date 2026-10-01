@@ -10,9 +10,9 @@ const links = [
   { href: "#contact", label: "Contact" },
 ];
 
-const mailtoHref = `mailto:${profile.email}?subject=${encodeURIComponent(
-  "Let's talk",
-)}&body=${encodeURIComponent("Hi Fahad,\n\n")}`;
+const gmailHref = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+  profile.email,
+)}&su=${encodeURIComponent("Let's talk")}&body=${encodeURIComponent("Hi Fahad,\n\n")}`;
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
@@ -108,7 +108,12 @@ export default function Nav() {
             </li>
           ))}
           <li>
-            <a href={mailtoHref} className="btn btn-primary ml-2 px-5 text-xs">
+            <a
+              href={gmailHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary ml-2 px-5 text-xs"
+            >
               Say Hi
             </a>
           </li>
@@ -172,7 +177,9 @@ export default function Nav() {
         </nav>
 
         <a
-          href={mailtoHref}
+          href={gmailHref}
+          target="_blank"
+          rel="noopener noreferrer"
           onClick={() => setOpen(false)}
           className="btn btn-primary mt-8 w-full"
         >
