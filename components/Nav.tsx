@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { profile } from "@/lib/content";
 
 const links = [
   { href: "#about", label: "About" },
@@ -8,6 +9,10 @@ const links = [
   { href: "#projects", label: "Projects" },
   { href: "#contact", label: "Contact" },
 ];
+
+const mailtoHref = `mailto:${profile.email}?subject=${encodeURIComponent(
+  "Let's talk",
+)}&body=${encodeURIComponent("Hi Fahad,\n\n")}`;
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
@@ -103,7 +108,7 @@ export default function Nav() {
             </li>
           ))}
           <li>
-            <a href="#contact" className="btn btn-primary ml-2 px-5 text-xs">
+            <a href={mailtoHref} className="btn btn-primary ml-2 px-5 text-xs">
               Say Hi
             </a>
           </li>
@@ -167,7 +172,7 @@ export default function Nav() {
         </nav>
 
         <a
-          href="#contact"
+          href={mailtoHref}
           onClick={() => setOpen(false)}
           className="btn btn-primary mt-8 w-full"
         >
