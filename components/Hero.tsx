@@ -94,7 +94,7 @@ export default function Hero() {
               View Projects
             </a>
             <a
-              href="/resume.pdf"
+              href="/Fahad_Yusuf_Qureshi_CV.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-secondary w-full xs:w-auto"

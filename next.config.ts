@@ -8,11 +8,11 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/resume.pdf",
+        source: "/Fahad_Yusuf_Qureshi_CV.pdf",
         headers: [
           {
             key: "Content-Disposition",
-            value: 'inline; filename="resume.pdf"',
+            value: 'inline; filename="Fahad_Yusuf_Qureshi_CV.pdf"',
           },
         ],
       },
