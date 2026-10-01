@@ -84,7 +84,7 @@ export const projects: Project[] = [
     tint: "indigo",
     title: "MedRestock — Reorder Management for a Pharmaceutical Supplier",
     description:
-      "Reorder management for a pharmaceutical supplier running two data-isolated businesses from one deployment, with a full audit trail and deduplicated low-stock email alerts.",
+      "Multi-tenant reorder management for a pharmaceutical supplier, with full audit trails and deduplicated low-stock alerts.",
     stack: ["React (TS)", "Fastify", "Prisma + PostgreSQL", "Oracle Cloud/nginx", "Supabase"],
   },
   {
