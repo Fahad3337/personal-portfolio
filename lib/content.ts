@@ -103,22 +103,6 @@ export const projects: Project[] = [
       "Full-stack university platform with real-time chat, announcements, lost-and-found, and an anonymous confession board.",
     stack: ["React (TS, Vite)", "Node.js (Express, TS)", "Firebase Firestore", "PostgreSQL"],
   },
-  {
-    icon: "lock",
-    tint: "rose",
-    title: "Password Strength Manager — Cybersecurity",
-    description:
-      "Evaluates password robustness with entropy-based scoring, plus end-to-end hashing and encryption.",
-    stack: ["Cybersecurity", "Entropy Scoring", "Encryption"],
-  },
-  {
-    icon: "store",
-    tint: "emerald",
-    title: "GoatIt — Livestock Marketplace App",
-    description:
-      "Full-featured marketplace app for buying and selling livestock, digitizing an informal, in-person process.",
-    stack: ["Flutter", "Firebase", "Cloudinary"],
-  },
 ];
 
 export type SkillCategory = {
