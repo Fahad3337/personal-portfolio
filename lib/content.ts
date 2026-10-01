@@ -72,20 +72,28 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    icon: "file",
-    tint: "sky",
-    title: "HIMS Letter Management System",
-    description:
-      "HR staff generate, archive, and search official employee letters from versioned templates — rendered to PDF and stored with role-based access control.",
-    stack: ["React (Vite, Tailwind)", "Node.js/Express", "PostgreSQL + Prisma", "Puppeteer", "MinIO/S3"],
-  },
-  {
     icon: "mic",
     tint: "violet",
     title: "Real-Time Voice Receptionist for Aesthetic/Dental Clinics",
     description:
       "AI voice receptionist for dental and aesthetic clinics, built with Retell for natural, Urdu-accented conversations.",
     stack: ["Retell", "Voice Cloning", "Agentic AI"],
+  },
+  {
+    icon: "database",
+    tint: "indigo",
+    title: "MedRestock — Reorder Management for a Pharmaceutical Supplier",
+    description:
+      "Reorder management for a pharmaceutical supplier running two data-isolated businesses from one deployment, with a full audit trail and deduplicated low-stock email alerts.",
+    stack: ["React (TS)", "Fastify", "Prisma + PostgreSQL", "Oracle Cloud/nginx", "Supabase"],
+  },
+  {
+    icon: "file",
+    tint: "sky",
+    title: "HIMS Letter Management System",
+    description:
+      "HR staff generate, archive, and search official employee letters from versioned templates — rendered to PDF and stored with role-based access control.",
+    stack: ["React (Vite, Tailwind)", "Node.js/Express", "PostgreSQL + Prisma", "Puppeteer", "MinIO/S3"],
   },
   {
     icon: "graduation",
