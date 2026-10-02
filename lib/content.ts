@@ -156,13 +156,6 @@ export const skills: SkillCategory[] = [
     ],
   },
   {
-    icon: "nodes",
-    tint: "indigo",
-    name: "Core CS",
-    description: "Fundamentals that underpin everything else I build.",
-    items: ["Data Structures", "Object-Oriented Programming"],
-  },
-  {
     icon: "database",
     tint: "emerald",
     name: "Databases",
