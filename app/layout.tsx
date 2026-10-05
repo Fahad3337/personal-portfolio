@@ -17,7 +17,7 @@ const description = `${profile.title} in ${profile.location}. ${profile.tagline}
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: `${profile.name} — ${profile.title}`,
+  title: profile.name,
   description,
   alternates: {
     canonical: "/",
