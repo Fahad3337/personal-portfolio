@@ -7,7 +7,7 @@ import ProjectPlaceholder from "@/components/ProjectPlaceholder";
 
 export default function Projects() {
   return (
-    <section id="projects" className="bg-bg-elevated py-12 md:py-16">
+    <section id="projects" className="bg-slate-100 py-12 md:py-16">
       <div className="container-page">
         <Reveal>
           <span className="eyebrow">
@@ -24,7 +24,7 @@ export default function Projects() {
               <Reveal key={project.slug} delay={i * 80} className="h-full">
                 <Link
                   href={`/projects/${project.slug}`}
-                  className="focus-ring group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition-[border-color,transform] duration-300 hover:-translate-y-1 hover:border-border-hover"
+                  className="focus-ring group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-card shadow-[var(--shadow-card)] transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-1 hover:border-border-hover hover:shadow-[var(--shadow-card-hover)]"
                 >
                   <div className="relative aspect-[16/9] overflow-hidden border-b border-border bg-bg">
                     {cover ? (
