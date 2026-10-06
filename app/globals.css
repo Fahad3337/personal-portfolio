@@ -7,26 +7,31 @@
    magic pixel values in JSX.
    ========================================= */
 :root {
-  /* Surfaces */
-  --bg: #000000;
-  --bg-elevated: #070708;
-  --card: rgba(255, 255, 255, 0.03);
-  --card-hover: rgba(255, 255, 255, 0.05);
-  --border: rgba(255, 255, 255, 0.08);
-  --border-hover: rgba(34, 197, 94, 0.5);
+  /* Surfaces — light theme matching the Dentivoice landing page */
+  --bg: #f6f8fb;
+  --bg-elevated: #ffffff;
+  --card: #ffffff;
+  --card-hover: #ffffff;
+  --border: #e2e8f0;
+  --border-hover: rgba(13, 148, 136, 0.45);
+  --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 16px rgba(15, 23, 42, 0.04);
+  --shadow-card-hover: 0 12px 32px rgba(15, 23, 42, 0.1);
 
-  /* Text */
-  --text-primary: #f4f4f5;
-  --text-secondary: #a1a1aa;
-  --text-tertiary: #7a7a85;
+  /* Dark navy used for the navbar and terminal panel (Dentivoice header colour) */
+  --navy: #1b2335;
 
-  /* Accent — a single terminal-green hue. --accent-2 is a lighter tone of the
-     same hue (not a second colour), used for chip text and gradient depth. */
-  --accent: #22c55e;
-  --accent-hover: #4ade80;
-  --accent-soft: rgba(34, 197, 94, 0.12);
-  --accent-2: #86efac;
-  --accent-dim: #10b981;
+  /* Text — slate */
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-tertiary: #64748b;
+
+  /* Accent — a single teal hue (Tailwind teal-600 so it stays readable on white).
+     --accent-2 is a deeper tone of the same hue, used for chip text. */
+  --accent: #0d9488;
+  --accent-hover: #0f766e;
+  --accent-soft: rgba(13, 148, 136, 0.1);
+  --accent-2: #0f766e;
+  --accent-dim: #14b8a6;
 
 
   /* Fonts */
@@ -58,6 +63,7 @@
   --color-accent-soft: var(--accent-soft);
   --color-accent-2: var(--accent-2);
   --color-accent-dim: var(--accent-dim);
+  --color-navy: var(--navy);
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-tertiary: var(--text-tertiary);
@@ -121,83 +127,48 @@ body {
   .eyebrow {
     @apply mb-4 inline-flex items-center gap-2 font-mono text-xs font-medium tracking-[0.2em] text-accent lowercase;
   }
-  .eyebrow-line {
-    @apply h-px w-6 bg-accent;
-  }
   /* Per-category tint. Set on the CARD; both the icon plate and the hover
      glow read --tint from it, so one class drives the whole card's colour.
      This is the only place colour varies — the reference colour-codes its
      skill tiles the same way despite using a single primary accent. */
   .tint-violet {
-    --tint: #c084fc;
-    --tint-bg: rgba(168, 85, 247, 0.14);
+    --tint: #7c3aed;
+    --tint-bg: rgba(124, 58, 237, 0.1);
   }
   .tint-amber {
-    --tint: #facc15;
-    --tint-bg: rgba(234, 179, 8, 0.12);
+    --tint: #b45309;
+    --tint-bg: rgba(217, 119, 6, 0.12);
   }
   .tint-sky {
-    --tint: #38bdf8;
-    --tint-bg: rgba(56, 189, 248, 0.14);
+    --tint: #0284c7;
+    --tint-bg: rgba(2, 132, 199, 0.1);
   }
   .tint-indigo {
-    --tint: #a5b4fc;
-    --tint-bg: rgba(129, 140, 248, 0.14);
+    --tint: #4f46e5;
+    --tint-bg: rgba(79, 70, 229, 0.1);
   }
   .tint-emerald {
-    --tint: #4ade80;
-    --tint-bg: rgba(34, 197, 94, 0.14);
+    --tint: #0d9488;
+    --tint-bg: rgba(13, 148, 136, 0.1);
   }
   .tint-rose {
-    --tint: #fb7185;
-    --tint-bg: rgba(244, 63, 94, 0.14);
+    --tint: #e11d48;
+    --tint-bg: rgba(225, 29, 72, 0.1);
   }
   .tint-slate {
-    --tint: #cbd5e1;
-    --tint-bg: rgba(203, 213, 225, 0.12);
+    --tint: #334155;
+    --tint-bg: rgba(51, 65, 85, 0.08);
   }
 
   /* Shared icon plate used by skills, projects and contact.
-     Falls back to the green accent when no --tint is inherited. */
+     Falls back to the teal accent when no --tint is inherited. */
   .icon-tile {
-    @apply flex items-center justify-center ring-1 ring-white/10;
+    @apply flex items-center justify-center ring-1 ring-slate-900/5;
     background: var(
       --tint-bg,
-      linear-gradient(135deg, var(--accent-soft), rgba(134, 239, 172, 0.08))
+      linear-gradient(135deg, var(--accent-soft), rgba(13, 148, 136, 0.04))
     );
     color: var(--tint, var(--accent));
-  }
-
-  /* Card whose top edge lights up with a gradient bar on hover, mirroring the
-     reference's project-card treatment. The hover always uses the site accent
-     — only the icon plates carry per-category colour. Used by Skills. */
-  .card-glow {
-    @apply relative overflow-hidden rounded-2xl border border-border bg-card;
-    transition:
-      transform 0.3s ease,
-      border-color 0.3s ease,
-      box-shadow 0.3s ease,
-      background-color 0.3s ease;
-  }
-  .card-glow::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent), var(--accent-2));
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  .card-glow:hover::before {
-    opacity: 1;
-  }
-  .card-glow:hover {
-    transform: translateY(-3px);
-    border-color: color-mix(in srgb, var(--accent) 40%, transparent);
-    background-color: var(--card-hover);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
   }
 
   /* Full-card hover glow, mirroring the reference's skill-card treatment:
@@ -205,6 +176,7 @@ body {
      and the card lifts with a soft shadow + accent ring. Used by Contact. */
   .card-halo {
     @apply relative overflow-hidden rounded-2xl border border-border bg-card;
+    box-shadow: var(--shadow-card);
     transition:
       transform 0.3s ease,
       border-color 0.3s ease,
@@ -231,7 +203,7 @@ body {
     transform: translateY(-4px);
     border-color: var(--border-hover);
     box-shadow:
-      0 20px 40px rgba(0, 0, 0, 0.4),
+      var(--shadow-card-hover),
       0 0 0 1px color-mix(in srgb, var(--accent) 20%, transparent);
   }
   .heading-lg {
@@ -244,10 +216,14 @@ body {
   }
   .card-surface {
     @apply rounded-2xl border border-border bg-card transition-all duration-300 hover:border-border-hover hover:bg-card-hover;
+    box-shadow: var(--shadow-card);
+  }
+  .card-surface:hover {
+    box-shadow: var(--shadow-card-hover);
   }
   /* Slightly larger on phones — 0.68rem lands at ~10.9px, too small to read comfortably */
   .chip {
-    @apply rounded border border-white/10 bg-white/[0.06] px-2.5 py-1 font-mono text-[0.75rem] text-text-secondary md:text-[0.7rem];
+    @apply rounded border border-border bg-slate-100 px-2.5 py-1 font-mono text-[0.75rem] text-text-secondary md:text-[0.7rem];
   }
   .btn {
     @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-7 py-3 text-sm font-semibold transition-all duration-200;
@@ -257,11 +233,11 @@ body {
     outline-offset: 2px;
   }
   .btn-primary {
-    @apply relative overflow-hidden bg-accent font-bold text-bg hover:-translate-y-0.5 hover:bg-accent-hover;
-    box-shadow: 0 0 24px var(--accent-soft);
+    @apply relative overflow-hidden bg-accent font-bold text-white hover:-translate-y-0.5 hover:bg-accent-hover;
+    box-shadow: 0 4px 14px rgba(13, 148, 136, 0.25);
   }
   .btn-primary:hover {
-    box-shadow: 0 0 36px var(--accent-soft);
+    box-shadow: 0 8px 22px rgba(13, 148, 136, 0.32);
   }
   /* Light sweeps across the button on hover */
   .btn-primary::after {
@@ -279,7 +255,7 @@ body {
     left: 110%;
   }
   .btn-secondary {
-    @apply border border-border text-text-primary hover:border-accent hover:bg-accent-soft hover:text-accent;
+    @apply border border-border bg-white text-text-primary hover:border-accent hover:bg-accent-soft hover:text-accent;
   }
 }
 
@@ -292,7 +268,7 @@ body {
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  opacity: 0.04;
+  opacity: 0.025;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -337,12 +313,6 @@ body {
   animation: rise 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-/* Hairline gradient seam between sections */
-.seam {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--border), transparent);
-}
-
 /* Animated underline for inline text links */
 .link-underline {
   position: relative;
@@ -375,24 +345,10 @@ body {
   transform: translateY(0);
 }
 
-.gradient-text {
-  background: linear-gradient(135deg, #fff 0%, var(--accent-2) 55%, var(--accent) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 /* Vertical sheen for the hero headline. Deliberately vertical so each word
    renders identically no matter where it sits on the line. */
 .headline-sheen {
-  background: linear-gradient(180deg, #ffffff 0%, #ffffff 45%, #bbf7d0 125%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.stat-gradient {
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  background: linear-gradient(180deg, #0f172a 0%, #0f172a 55%, #0f766e 130%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;

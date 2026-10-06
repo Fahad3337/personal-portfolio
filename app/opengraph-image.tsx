@@ -16,9 +16,9 @@ export default async function OpengraphImage() {
           alignItems: "flex-start",
           justifyContent: "center",
           padding: "80px",
-          background: "#000000",
+          background: "#0b1320",
           backgroundImage:
-            "radial-gradient(circle at 10% -10%, rgba(34,197,94,0.35), transparent 55%), radial-gradient(circle at 100% 10%, rgba(16,185,129,0.22), transparent 50%)",
+            "radial-gradient(circle at 10% -10%, rgba(20,184,166,0.35), transparent 55%), radial-gradient(circle at 100% 10%, rgba(13,148,136,0.22), transparent 50%)",
         }}
       >
         <div
@@ -28,14 +28,14 @@ export default async function OpengraphImage() {
             gap: 10,
             padding: "8px 20px",
             borderRadius: 999,
-            border: "1px solid rgba(34,197,94,0.35)",
-            background: "rgba(34,197,94,0.12)",
-            color: "#86efac",
+            border: "1px solid rgba(20,184,166,0.35)",
+            background: "rgba(20,184,166,0.12)",
+            color: "#5eead4",
             fontSize: 22,
             marginBottom: 36,
           }}
         >
-          <div style={{ width: 10, height: 10, borderRadius: 999, background: "#22c55e" }} />
+          <div style={{ width: 10, height: 10, borderRadius: 999, background: "#14b8a6" }} />
           {profile.location}
         </div>
         <div

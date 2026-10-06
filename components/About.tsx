@@ -50,8 +50,8 @@ export default function About() {
 
           <div className="mt-6 space-y-4 text-[0.95rem] leading-[1.8] text-text-secondary sm:text-base">
             <p>
-              I&apos;m a Computer Science undergraduate and the founder of Techudev, where I build AI
-              voice agents that answer calls and book appointments for dental clinics.
+              I&apos;m a Computer Science undergraduate and the founder of Dentivoice, where I build
+              AI voice agents that answer calls and book appointments for dental clinics.
             </p>
             <p>
               Alongside that I build full-stack web products, from internal hospital systems to

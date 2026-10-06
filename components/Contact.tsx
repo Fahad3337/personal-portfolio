@@ -30,9 +30,9 @@ const channels: { label: string; value: string; href: string; icon: IconName; ti
 // and to skip its own cookie banner inside the frame.
 const calendlyEmbed = `${profile.calendly}?${new URLSearchParams({
   hide_gdpr_banner: "1",
-  background_color: "0a0a0a",
-  text_color: "f4f4f5",
-  primary_color: "22c55e",
+  background_color: "ffffff",
+  text_color: "0f172a",
+  primary_color: "0d9488",
 })}`;
 
 export default function Contact() {
@@ -40,7 +40,7 @@ export default function Contact() {
     <section id="contact" className="relative overflow-hidden section-py">
       <div
         aria-hidden
-        className="pointer-events-none absolute top-0 left-1/2 h-[380px] w-[680px] -translate-x-1/2 opacity-[0.18] blur-[100px]"
+        className="pointer-events-none absolute top-0 left-1/2 h-[380px] w-[680px] -translate-x-1/2 opacity-[0.12] blur-[100px]"
         style={{ background: "radial-gradient(circle, var(--accent) 0%, transparent 70%)" }}
       />
 
@@ -97,7 +97,7 @@ export default function Contact() {
         </div>
 
         <Reveal delay={120}>
-          <div className="overflow-hidden rounded-2xl border border-border bg-bg-elevated">
+          <div className="overflow-hidden rounded-2xl border border-border bg-bg-elevated shadow-[var(--shadow-card)]">
             <iframe
               src={calendlyEmbed}
               title="Book a 30-minute call with Fahad"

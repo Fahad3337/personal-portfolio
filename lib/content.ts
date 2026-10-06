@@ -23,13 +23,13 @@ export const profile = {
 };
 
 // Rotating hero titles — all drawn directly from the resume (job title,
-// skill categories, and the Techudev founder role), nothing invented.
+// skill categories, and the Dentivoice founder role), nothing invented.
 export const heroTitles = [
   "Web Developer",
   "Agentic AI Engineer",
   "Full-Stack Developer",
   "Voice AI Engineer",
-  "Founder, Techudev",
+  "Founder, Dentivoice",
 ];
 
 export type ExperienceEntry = {
@@ -42,9 +42,18 @@ export type ExperienceEntry = {
 
 export const experience: ExperienceEntry[] = [
   {
-    role: "IT Consultant / Developer",
-    org: "Farooq Group of Hospitals",
-    period: "Present",
+    role: "Founder",
+    org: "Dentivoice",
+    period: "Oct 2026 – Present",
+    subtitle: "Voice agents for dental clinics",
+    bullets: [
+      "Building AI voice agents that catch the patient calls dental clinics miss outside working hours, aiming for zero missed calls and less staff time on the phone.",
+    ],
+  },
+  {
+    role: "Information Technology Developer",
+    org: "Farooq Hospital",
+    period: "Aug 2026 – Present",
     subtitle: "Hospital Information Management System (HIMS)",
     bullets: [
       "Built the HIMS Letters module, which HR uses to generate, archive and search official employee letters.",
@@ -54,11 +63,10 @@ export const experience: ExperienceEntry[] = [
   {
     role: "Founder",
     org: "Techudev",
-    period: "Present",
-    subtitle: "Websites, marketing and AI voice agents",
+    period: "Jun 2025 – Feb 2026",
+    subtitle: "Website & marketing services for local businesses",
     bullets: [
-      "Started with website development and digital marketing for local brands in Lahore.",
-      "Now building AI voice agents for dental clinics.",
+      "Provided website development and marketing for local brands in Lahore, working directly with clients in markets like Kareem Block, Liberty and Gulberg.",
     ],
   },
 ];
