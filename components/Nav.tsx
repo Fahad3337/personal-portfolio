@@ -5,7 +5,6 @@ import { profile } from "@/lib/content";
 
 const links = [
   { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
   { href: "#projects", label: "Projects" },
   { href: "#contact", label: "Contact" },
 ];
@@ -100,7 +99,7 @@ export default function Nav() {
                 className={`focus-ring inline-flex min-h-11 items-center rounded-md px-3.5 font-medium transition-colors ${
                   active === link.href.slice(1)
                     ? "text-accent"
-                    : "text-text-secondary hover:bg-white/[0.06] hover:text-text-primary"
+                    : "text-text-secondary hover:bg-white/[0.06] hover:text-accent"
                 }`}
               >
                 {link.label}
@@ -138,7 +137,6 @@ export default function Nav() {
           style={{ background: "linear-gradient(90deg, var(--accent), var(--accent-2))" }}
         />
       </div>
-
     </header>
 
     {open && (
