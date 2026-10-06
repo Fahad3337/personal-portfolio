@@ -13,7 +13,7 @@ export default function ProjectPlaceholder({
       className={`absolute inset-0 flex items-center justify-center tint-${project.tint}`}
       style={{
         backgroundImage:
-          "radial-gradient(circle at 30% 20%, var(--tint-bg), transparent 70%), linear-gradient(rgba(15,23,42,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,0.05) 1px, transparent 1px)",
+          "radial-gradient(circle at 30% 20%, var(--tint-bg), transparent 70%), linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)",
         backgroundSize: "auto, 32px 32px, 32px 32px",
       }}
     >

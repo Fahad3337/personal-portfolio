@@ -40,7 +40,7 @@ export default function Hero() {
           className="absolute inset-0 opacity-[0.05]"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(15,23,42,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,0.5) 1px, transparent 1px)",
+              "linear-gradient(rgba(255,255,255,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.4) 1px, transparent 1px)",
             backgroundSize: "56px 56px",
             maskImage:
               "radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%)",

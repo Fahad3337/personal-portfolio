@@ -73,8 +73,10 @@ export default function Nav() {
   return (
     <>
     <header
-      className={`fixed inset-x-0 top-0 z-50 bg-navy transition-shadow duration-300 ${
-        scrolled ? "shadow-[0_4px_20px_rgba(15,23,42,0.18)]" : ""
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "border-b border-border bg-bg/85 backdrop-blur-xl"
+          : "border-b border-transparent bg-transparent"
       }`}
     >
       <nav
@@ -83,9 +85,9 @@ export default function Nav() {
       >
         <a
           href="#top"
-          className="focus-ring inline-flex min-h-11 items-center rounded font-mono text-[1.05rem] font-bold tracking-tight text-white"
+          className="focus-ring inline-flex min-h-11 items-center rounded font-mono text-[1.05rem] font-bold tracking-tight text-text-primary"
         >
-          fahad<span className="text-teal-300">_</span>
+          fahad<span className="text-accent">_</span>
         </a>
 
         <ul className="hidden items-center gap-1 text-sm sm:flex">
@@ -96,8 +98,8 @@ export default function Nav() {
                 aria-current={active === link.href.slice(1) ? "true" : undefined}
                 className={`focus-ring inline-flex min-h-11 items-center rounded-md px-3.5 font-medium transition-colors ${
                   active === link.href.slice(1)
-                    ? "text-teal-300"
-                    : "text-slate-300 hover:bg-white/[0.06] hover:text-teal-300"
+                    ? "text-accent"
+                    : "text-text-secondary hover:bg-white/[0.06] hover:text-accent"
                 }`}
               >
                 {link.label}
@@ -122,7 +124,7 @@ export default function Nav() {
           aria-label="Open menu"
           aria-expanded={open}
           aria-controls="mobile-menu"
-          className="focus-ring flex h-11 w-11 items-center justify-center rounded-lg border border-teal-300/30 bg-white/5 text-teal-300 transition-colors hover:border-teal-300/50 sm:hidden"
+          className="focus-ring flex h-11 w-11 items-center justify-center rounded-lg border border-accent/30 bg-accent-soft text-accent transition-colors hover:border-accent/50 sm:hidden"
         >
           <span aria-hidden>☰</span>
         </button>
@@ -132,7 +134,7 @@ export default function Nav() {
         <div
           ref={progressRef}
           className="h-full origin-left scale-x-0"
-          style={{ background: "linear-gradient(90deg, #2dd4bf, #5eead4)" }}
+          style={{ background: "linear-gradient(90deg, var(--accent), var(--accent-2))" }}
         />
       </div>
     </header>
