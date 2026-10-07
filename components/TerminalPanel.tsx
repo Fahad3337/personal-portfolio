@@ -36,7 +36,7 @@ function Cursor() {
   return (
     <span
       aria-hidden
-      className="ml-0.5 inline-block h-[1em] w-[0.5em] translate-y-[0.15em] bg-accent"
+      className="ml-0.5 inline-block h-[1em] w-[0.5em] translate-y-[0.15em] bg-teal-400"
       style={{ animation: "blink 1s step-end infinite" }}
     />
   );
@@ -46,12 +46,12 @@ function LineContent({ line, text }: { line: Line; text: string }) {
   if (line.prompt) {
     return (
       <>
-        <span className="text-accent">$ </span>
-        <span className="text-text-primary">{text}</span>
+        <span className="text-teal-400">$ </span>
+        <span className="text-slate-100">{text}</span>
       </>
     );
   }
-  return <span className="text-text-secondary">{text}</span>;
+  return <span className="text-slate-400">{text}</span>;
 }
 
 export default function TerminalPanel() {
@@ -96,13 +96,13 @@ export default function TerminalPanel() {
   return (
     <div
       aria-hidden
-      className="card-surface hidden w-[400px] shrink-0 p-0 font-mono text-[13px] leading-relaxed xl:block"
+      className="hidden w-[400px] shrink-0 overflow-hidden rounded-2xl border border-slate-800 bg-navy font-mono text-[13px] leading-relaxed shadow-[0_20px_50px_rgba(15,23,42,0.25)] xl:block"
     >
-      <div className="flex items-center gap-1.5 border-b border-border px-4 py-3">
+      <div className="flex items-center gap-1.5 border-b border-white/10 px-4 py-3">
         <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
         <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
-        <span className="h-2.5 w-2.5 rounded-full bg-accent/40" />
-        <span className="ml-2 text-[0.72rem] tracking-wide text-text-tertiary">
+        <span className="h-2.5 w-2.5 rounded-full bg-teal-400/50" />
+        <span className="ml-2 text-[0.72rem] tracking-wide text-slate-500">
           fahad@portfolio:~
         </span>
       </div>

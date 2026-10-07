@@ -27,7 +27,7 @@ export default function ProjectGallery({ images, title }: { images: string[]; ti
               type="button"
               onClick={() => go(index - 1)}
               aria-label="Previous screenshot"
-              className="focus-ring absolute top-1/2 left-3 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/60 text-text-primary backdrop-blur transition-colors hover:border-border-hover hover:text-accent"
+              className="focus-ring absolute top-1/2 left-3 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-white/90 text-text-primary shadow-sm backdrop-blur transition-colors hover:border-border-hover hover:text-accent"
             >
               <span aria-hidden>←</span>
             </button>
@@ -35,7 +35,7 @@ export default function ProjectGallery({ images, title }: { images: string[]; ti
               type="button"
               onClick={() => go(index + 1)}
               aria-label="Next screenshot"
-              className="focus-ring absolute top-1/2 right-3 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/60 text-text-primary backdrop-blur transition-colors hover:border-border-hover hover:text-accent"
+              className="focus-ring absolute top-1/2 right-3 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-white/90 text-text-primary shadow-sm backdrop-blur transition-colors hover:border-border-hover hover:text-accent"
             >
               <span aria-hidden>→</span>
             </button>
@@ -56,7 +56,7 @@ export default function ProjectGallery({ images, title }: { images: string[]; ti
             >
               <span
                 className={`h-1 w-full rounded-full transition-colors ${
-                  i === index ? "bg-accent" : "bg-white/15 group-hover:bg-white/30"
+                  i === index ? "bg-accent" : "bg-slate-300 group-hover:bg-slate-400"
                 }`}
               />
             </button>
