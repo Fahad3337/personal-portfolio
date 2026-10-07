@@ -53,20 +53,23 @@ export default function About() {
               I&apos;m a Computer Science undergraduate and the founder of Dentivoice, where I build
               AI voice agents that answer calls and book appointments for dental clinics.
             </p>
-            <p>
+            <p className="max-sm:hidden">
               Alongside that I build full-stack web products, from internal hospital systems to
               stock management for a pharmaceutical supplier. I&apos;m comfortable owning a product
               end to end, from architecture to shipping.
             </p>
           </div>
 
-          <dl className="mt-8 divide-y divide-border border-y border-border">
+          <dl className="max-sm:hidden mt-8 max-sm:mt-6 divide-y divide-border border-y border-border">
             {facts.map((fact) => (
-              <div key={fact.label} className="flex items-baseline justify-between gap-6 py-3">
+              <div
+                key={fact.label}
+                className="last:max-sm:hidden flex items-baseline justify-between gap-6 py-3 max-sm:flex-col max-sm:gap-1"
+              >
                 <dt className="font-mono text-[0.7rem] tracking-[0.12em] text-text-tertiary uppercase">
                   {fact.label}
                 </dt>
-                <dd className="text-right text-sm font-medium text-text-primary">{fact.value}</dd>
+                <dd className="text-right text-sm font-medium text-text-primary max-sm:text-left">{fact.value}</dd>
               </div>
             ))}
           </dl>
@@ -76,7 +79,7 @@ export default function About() {
           <h3 className="font-mono text-xs font-medium tracking-[0.2em] text-text-tertiary uppercase">
             Experience
           </h3>
-          <ol className="mt-6 space-y-9 border-l border-border">
+          <ol className="mt-6 space-y-9 max-sm:space-y-7 border-l border-border">
             {experience.map((entry) => (
               <TimelineItem
                 key={entry.org}
@@ -85,8 +88,8 @@ export default function About() {
                 subtitle={entry.subtitle}
               >
                 <ul className="mt-3 space-y-2 text-sm leading-relaxed text-text-secondary">
-                  {entry.bullets.map((bullet) => (
-                    <li key={bullet} className="flex gap-3">
+                  {entry.bullets.map((bullet, bi) => (
+                    <li key={bullet} className={`flex gap-3 ${bi > 0 ? "max-sm:hidden" : ""}`}>
                       <span aria-hidden className="mt-[0.6rem] h-px w-2.5 shrink-0 bg-text-tertiary" />
                       <span>{bullet}</span>
                     </li>

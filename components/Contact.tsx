@@ -97,7 +97,26 @@ export default function Contact() {
         </div>
 
         <Reveal delay={120}>
-          <div className="overflow-hidden rounded-2xl border border-border bg-bg-elevated shadow-[var(--shadow-card)]">
+          {/* The embedded scheduler is cramped on phones, so they get a direct link instead. */}
+          <div className="rounded-2xl border border-slate-800 bg-navy p-6 text-center shadow-[0_8px_24px_rgba(15,23,42,0.18)] sm:hidden">
+            <p className="font-mono text-xs tracking-[0.15em] text-teal-300 uppercase">
+              30-minute call
+            </p>
+            <p className="mt-2 text-xl font-bold text-white">Prefer to talk it through?</p>
+            <p className="mt-2 text-sm leading-relaxed text-slate-400">
+              Pick a time that suits you and I&apos;ll be there.
+            </p>
+            <a
+              href={profile.calendly}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary mt-5 w-full"
+            >
+              Book a call
+            </a>
+          </div>
+
+          <div className="overflow-hidden rounded-2xl border border-border bg-bg-elevated shadow-[var(--shadow-card)] max-sm:hidden">
             <iframe
               src={calendlyEmbed}
               title="Book a 30-minute call with Fahad"
@@ -105,7 +124,7 @@ export default function Contact() {
               className="block h-[700px] w-full"
             />
           </div>
-          <p className="mt-3 text-center text-xs text-text-tertiary">
+          <p className="mt-3 text-center text-xs text-text-tertiary max-sm:hidden">
             Calendar not loading?{" "}
             <a
               href={profile.calendly}

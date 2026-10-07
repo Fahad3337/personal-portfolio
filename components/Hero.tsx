@@ -54,8 +54,19 @@ export default function Hero() {
 
       <div className="container-page relative z-10 flex items-center gap-16 xl:gap-24">
         <div className="max-w-2xl text-left">
+          {/* Phone-only status pill; the terminal panel plays this role on desktop. */}
+          <p
+            className="rise mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-white/70 px-3.5 py-1.5 font-mono text-[0.72rem] tracking-wide text-text-secondary backdrop-blur sm:hidden"
+            style={{ animationDelay: "0ms" }}
+          >
+            <span aria-hidden className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+            </span>
+            Open to freelance &amp; collabs
+          </p>
           <h1
-            className="font-black tracking-[-0.04em]"
+            className="font-black tracking-[-0.04em] max-sm:text-[2.9rem]!"
             style={{ fontSize: "var(--fs-hero)", lineHeight: 1.02 }}
           >
             {nameWords.map((word, i) => (
