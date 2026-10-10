@@ -2,7 +2,7 @@ import type { IconName } from "@/components/Icon";
 
 // TODO: replace with the real production domain once this site is deployed —
 // used for canonical URL, Open Graph tags, and JSON-LD.
-export const siteUrl = "https://example.com";
+export const siteUrl = "https://fahadqureshi.tech";
 
 /** Icon-plate colours. Icons vary by category; hover states stay on the site accent. */
 export type TintKey = "violet" | "amber" | "sky" | "indigo" | "emerald" | "rose" | "slate";

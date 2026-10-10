@@ -28,11 +28,13 @@ export const metadata: Metadata = {
     url: siteUrl,
     siteName: profile.name,
     type: "website",
+    images: [{ url: "/og.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${profile.name} — ${profile.title}`,
     description,
+    images: ["/og.png"],
   },
   icons: {
     icon: "/favicon.ico",
